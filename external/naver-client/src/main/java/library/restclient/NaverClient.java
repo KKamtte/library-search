@@ -1,4 +1,4 @@
-package library;
+package library.restclient;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

@@ -1,18 +1,18 @@
-package library;
+package library.feign;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.test.context.ActiveProfiles;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-@SpringBootTest(classes = NaverClientTest.TestConfig.class)
+@SpringBootTest(classes = NaverFeignClientTest.TestConfig.class)
 @ActiveProfiles("test")
-class NaverClientTest {
+class NaverFeignClientTest {
 
-    @ComponentScan(basePackageClasses = NaverClientTest.class)
+    @EnableAutoConfiguration
+    @EnableFeignClients(clients = NaverClient.class)
     static class TestConfig {}
 
     @Autowired
@@ -20,7 +20,7 @@ class NaverClientTest {
 
     @Test
     void callNaver() {
-        String http = naverClient.search("Http");
+        String http = naverClient.search("http", 1, 10);
         System.out.println("http = " + http);
     }
 }
