@@ -18,9 +18,10 @@ class NaverFeignClientTest {
     @Autowired
     NaverClient naverClient;
 
-    @Test
-    void callNaver() {
-        String http = naverClient.search("http", 1, 10);
-        System.out.println("http = " + http);
-    }
+//    @Test
+//    void callNaver() {
+//        String http = naverClient.search("http", 1, 10);
+//        System.out.println("http = " + http);
+//    }
+//
 }
